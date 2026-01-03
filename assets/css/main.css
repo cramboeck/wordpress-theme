@@ -20,6 +20,7 @@
 /* Blocks */
 @import 'components/hero.css';
 @import 'components/services.css';
+@import 'components/features.css';
 @import 'components/testimonials.css';
 @import 'components/cta.css';
 @import 'components/faq.css';

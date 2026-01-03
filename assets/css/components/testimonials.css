@@ -1,43 +1,55 @@
 /**
  * Testimonials Block Styles
- *
- * @package Ramboeck
  */
 
 .testimonials {
-	padding-block: var(--space-2xl);
-	background: var(--color-background-alt);
+	padding: var(--space-3xl) var(--space-outer);
+	background-color: var(--color-background-alt);
+}
+
+.testimonials__container {
+	max-width: var(--width-wide);
+	margin-inline: auto;
+}
+
+.testimonials__grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: var(--space-lg);
 }
 
 .testimonial-card {
 	padding: var(--space-lg);
-	background: var(--color-background);
+	background-color: var(--color-background);
 	border-radius: var(--radius-lg);
+	box-shadow: var(--shadow-sm);
+}
+
+.testimonial-card__stars {
+	display: flex;
+	gap: 2px;
+	margin-bottom: var(--space-md);
+	color: #fbbf24;
+}
+
+.testimonial-card__stars svg {
+	width: 20px;
+	height: 20px;
+	fill: currentColor;
 }
 
 .testimonial-card__quote {
-	font-size: var(--font-size-large);
+	margin: 0 0 var(--space-md);
+	font-size: var(--font-size-base);
 	font-style: italic;
-	margin-block-end: var(--space-md);
+	line-height: 1.6;
 }
 
 .testimonial-card__author {
-	display: flex;
-	align-items: center;
-	gap: var(--space-sm);
+	font-weight: 600;
 }
 
-.testimonial-card__avatar {
-	width: 48px;
-	height: 48px;
-	border-radius: var(--radius-full);
-}
-
-.testimonial-card__name {
-	font-weight: var(--font-weight-semibold);
-}
-
-.testimonial-card__role {
+.testimonial-card__company {
 	font-size: var(--font-size-small);
 	color: var(--color-text-muted);
 }

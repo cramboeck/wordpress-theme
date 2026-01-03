@@ -1,31 +1,40 @@
 /**
  * CTA Block Styles
- *
- * @package Ramboeck
  */
 
 .cta {
-	padding-block: var(--space-2xl);
-	background: var(--color-primary);
-	color: var(--color-background);
+	padding: var(--space-2xl) var(--space-outer);
+	background-color: var(--color-primary);
+	color: white;
 	text-align: center;
 }
 
+.cta__container {
+	max-width: 800px;
+	margin-inline: auto;
+}
+
 .cta__title {
+	margin: 0 0 var(--space-sm);
+	font-size: var(--font-size-2xl);
+	font-weight: 700;
 	color: inherit;
-	margin-block-end: var(--space-sm);
 }
 
 .cta__text {
+	margin: 0 0 var(--space-lg);
+	font-size: var(--font-size-large);
 	opacity: 0.9;
-	margin-block-end: var(--space-lg);
 }
 
-.cta .button {
-	background: var(--color-background);
+.cta .wp-block-button__link {
+	background-color: white;
 	color: var(--color-primary);
+	padding: var(--space-sm) var(--space-lg);
+	font-weight: 600;
+	border-radius: var(--radius-md);
 }
 
-.cta .button:hover {
-	background: var(--color-background-alt);
+.cta .wp-block-button__link:hover {
+	background-color: var(--color-background-alt);
 }
