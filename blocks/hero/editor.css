@@ -1,0 +1,74 @@
+/**
+ * Hero Block Editor Styles
+ */
+
+.hero {
+	position: relative;
+	display: flex;
+	align-items: center;
+	min-height: 400px;
+	padding: 48px;
+	background-size: cover;
+	background-position: center;
+}
+
+.hero--full {
+	min-height: 600px;
+}
+
+.hero__overlay {
+	position: absolute;
+	inset: 0;
+	background-color: #0f172a;
+	pointer-events: none;
+}
+
+.hero__container {
+	position: relative;
+	z-index: 1;
+	width: 100%;
+}
+
+.hero__content {
+	max-width: 700px;
+}
+
+.hero--align-center {
+	text-align: center;
+}
+
+.hero--align-center .hero__content {
+	margin-inline: auto;
+}
+
+.hero--align-right {
+	text-align: right;
+}
+
+.hero--align-right .hero__content {
+	margin-inline-start: auto;
+}
+
+.hero__title {
+	margin: 0 0 16px;
+	font-size: clamp(2rem, 5vw, 3.5rem);
+	font-weight: 700;
+	line-height: 1.1;
+}
+
+.hero__subtitle {
+	margin: 0 0 24px;
+	font-size: clamp(1.125rem, 2vw, 1.25rem);
+	opacity: 0.9;
+}
+
+.hero__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+}
+
+.hero--has-background .hero__title,
+.hero--has-background .hero__subtitle {
+	color: inherit;
+}

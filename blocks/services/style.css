@@ -1,0 +1,91 @@
+/**
+ * Services Block Styles
+ */
+
+.services {
+	padding-block: var(--wp--preset--spacing--70);
+}
+
+.services__grid {
+	display: grid;
+	grid-template-columns: repeat(var(--services-columns, 3), 1fr);
+	gap: var(--wp--preset--spacing--50);
+	max-width: var(--wp--style--global--wide-size);
+	margin-inline: auto;
+	padding-inline: var(--wp--custom--spacing--outer);
+}
+
+.service-card {
+	padding: var(--wp--preset--spacing--50);
+	background-color: var(--wp--preset--color--background);
+	border-radius: var(--wp--custom--border-radius--large);
+	box-shadow: var(--wp--custom--shadow--medium);
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+	transform: translateY(-4px);
+	box-shadow: var(--wp--custom--shadow--large);
+}
+
+.service-card__icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 56px;
+	height: 56px;
+	margin-block-end: var(--wp--preset--spacing--40);
+	background-color: var(--wp--preset--color--primary);
+	border-radius: var(--wp--custom--border-radius--medium);
+	color: var(--wp--preset--color--background);
+}
+
+.service-card__icon svg {
+	width: 28px;
+	height: 28px;
+}
+
+.service-card__title {
+	margin-block: 0 var(--wp--preset--spacing--30);
+	font-size: var(--wp--preset--font-size--large);
+	font-weight: 600;
+}
+
+.service-card__description {
+	margin-block: 0 var(--wp--preset--spacing--40);
+	color: var(--wp--preset--color--text-muted);
+}
+
+.service-card__link {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--wp--preset--spacing--20);
+	font-weight: 500;
+	color: var(--wp--preset--color--primary);
+	text-decoration: none;
+}
+
+.service-card__link:hover {
+	color: var(--wp--preset--color--primary-dark);
+}
+
+.service-card__link svg {
+	transition: transform 0.2s ease;
+}
+
+.service-card__link:hover svg {
+	transform: translateX(4px);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+	.services__grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (max-width: 576px) {
+	.services__grid {
+		grid-template-columns: 1fr;
+	}
+}

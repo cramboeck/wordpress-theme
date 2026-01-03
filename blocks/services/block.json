@@ -1,0 +1,31 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "ramboeck/services",
+	"version": "1.0.0",
+	"title": "Leistungen",
+	"category": "ramboeck",
+	"icon": "grid-view",
+	"description": "Ein Grid mit Leistungen/Services als Karten.",
+	"keywords": ["services", "leistungen", "grid", "karten"],
+	"textdomain": "ramboeck",
+	"attributes": {
+		"columns": {
+			"type": "number",
+			"default": 3
+		},
+		"services": {
+			"type": "array",
+			"default": []
+		}
+	},
+	"supports": {
+		"align": ["wide", "full"],
+		"html": false,
+		"anchor": true
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./editor.css",
+	"style": "file:./style.css",
+	"render": "file:./render.php"
+}

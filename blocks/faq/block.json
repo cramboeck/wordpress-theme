@@ -1,0 +1,25 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "ramboeck/faq",
+	"version": "1.0.0",
+	"title": "FAQ",
+	"category": "ramboeck",
+	"icon": "editor-help",
+	"description": "Häufig gestellte Fragen als Akkordeon.",
+	"keywords": ["faq", "fragen", "akkordeon", "accordion"],
+	"textdomain": "ramboeck",
+	"attributes": {
+		"items": {
+			"type": "array",
+			"default": []
+		}
+	},
+	"supports": {
+		"align": ["wide"],
+		"html": false
+	},
+	"editorScript": "file:./index.js",
+	"style": "file:./style.css",
+	"render": "file:./render.php"
+}

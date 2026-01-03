@@ -1,0 +1,25 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "ramboeck/testimonials",
+	"version": "1.0.0",
+	"title": "Testimonials",
+	"category": "ramboeck",
+	"icon": "format-quote",
+	"description": "Kundenstimmen und Bewertungen anzeigen.",
+	"keywords": ["testimonials", "bewertungen", "kunden", "zitate"],
+	"textdomain": "ramboeck",
+	"attributes": {
+		"testimonials": {
+			"type": "array",
+			"default": []
+		}
+	},
+	"supports": {
+		"align": ["wide", "full"],
+		"html": false
+	},
+	"editorScript": "file:./index.js",
+	"style": "file:./style.css",
+	"render": "file:./render.php"
+}

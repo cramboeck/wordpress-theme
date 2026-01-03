@@ -1,0 +1,73 @@
+/**
+ * FAQ Block Styles
+ */
+
+.faq {
+	padding-block: var(--wp--preset--spacing--70);
+}
+
+.faq__container {
+	max-width: 800px;
+	margin-inline: auto;
+	padding-inline: var(--wp--custom--spacing--outer);
+}
+
+.faq__item {
+	border-block-end: 1px solid var(--wp--preset--color--border);
+}
+
+.faq__item:first-child {
+	border-block-start: 1px solid var(--wp--preset--color--border);
+}
+
+.faq__question {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	align-items: center;
+	gap: var(--wp--preset--spacing--40);
+	padding-block: var(--wp--preset--spacing--40);
+	font-size: var(--wp--preset--font-size--large);
+	font-weight: 600;
+	text-align: left;
+	background: none;
+	border: none;
+	cursor: pointer;
+	color: var(--wp--preset--color--text);
+	transition: color 0.2s ease;
+}
+
+.faq__question:hover {
+	color: var(--wp--preset--color--primary);
+}
+
+.faq__icon {
+	flex-shrink: 0;
+	transition: transform 0.3s ease;
+}
+
+.faq__item[data-open] .faq__icon {
+	transform: rotate(180deg);
+}
+
+.faq__answer {
+	padding-block-end: var(--wp--preset--spacing--40);
+	color: var(--wp--preset--color--text-muted);
+	line-height: 1.7;
+}
+
+.faq__answer[hidden] {
+	display: none;
+}
+
+.faq__answer p {
+	margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+	.faq__question {
+		font-size: var(--wp--preset--font-size--medium);
+		padding-block: var(--wp--preset--spacing--30);
+	}
+}

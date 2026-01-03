@@ -1,0 +1,43 @@
+/**
+ * Services Block Editor Styles
+ */
+
+.services {
+	padding: 48px 24px;
+}
+
+.services__grid {
+	display: grid;
+	gap: 24px;
+}
+
+.service-card {
+	padding: 24px;
+	background-color: #fff;
+	border-radius: 8px;
+	box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+.service-card__icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 48px;
+	height: 48px;
+	margin-bottom: 16px;
+	background-color: #3b82f6;
+	border-radius: 8px;
+	color: #fff;
+	font-size: 20px;
+}
+
+.service-card__title {
+	margin: 0 0 8px;
+	font-size: 1.125rem;
+	font-weight: 600;
+}
+
+.service-card__description {
+	margin: 0;
+	color: #64748b;
+}

@@ -1,0 +1,33 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "ramboeck/cta",
+	"version": "1.0.0",
+	"title": "Call to Action",
+	"category": "ramboeck",
+	"icon": "megaphone",
+	"description": "Ein auffälliger Call-to-Action Bereich.",
+	"keywords": ["cta", "call to action", "button", "aktion"],
+	"textdomain": "ramboeck",
+	"attributes": {
+		"title": {
+			"type": "string",
+			"default": ""
+		},
+		"text": {
+			"type": "string",
+			"default": ""
+		},
+		"backgroundColor": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"supports": {
+		"align": ["wide", "full"],
+		"html": false
+	},
+	"editorScript": "file:./index.js",
+	"style": "file:./style.css",
+	"render": "file:./render.php"
+}

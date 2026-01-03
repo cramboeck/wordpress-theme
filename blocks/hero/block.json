@@ -1,0 +1,59 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "ramboeck/hero",
+	"version": "1.0.0",
+	"title": "Hero",
+	"category": "ramboeck",
+	"icon": "cover-image",
+	"description": "Ein Hero-Bereich mit Titel, Untertitel und Call-to-Action Buttons.",
+	"keywords": ["hero", "banner", "header", "teaser"],
+	"textdomain": "ramboeck",
+	"attributes": {
+		"title": {
+			"type": "string",
+			"default": ""
+		},
+		"subtitle": {
+			"type": "string",
+			"default": ""
+		},
+		"alignment": {
+			"type": "string",
+			"default": "left"
+		},
+		"fullHeight": {
+			"type": "boolean",
+			"default": false
+		},
+		"backgroundType": {
+			"type": "string",
+			"default": "color"
+		},
+		"backgroundColor": {
+			"type": "string",
+			"default": ""
+		},
+		"backgroundImage": {
+			"type": "object",
+			"default": {}
+		},
+		"overlayOpacity": {
+			"type": "number",
+			"default": 50
+		},
+		"textColor": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"supports": {
+		"align": ["wide", "full"],
+		"html": false,
+		"anchor": true
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./editor.css",
+	"style": "file:./style.css",
+	"render": "file:./render.php"
+}
