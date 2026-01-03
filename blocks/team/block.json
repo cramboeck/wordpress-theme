@@ -23,7 +23,7 @@
 		"align": ["wide", "full"],
 		"html": false
 	},
-	"editorScript": "file:./index.js",
+	"editorScript": "file:../../build/team/index.js",
 	"style": "file:./style.css",
 	"render": "file:./render.php"
 }

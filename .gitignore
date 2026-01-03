@@ -5,6 +5,7 @@ vendor/
 # Build outputs
 assets/css/dist/
 assets/js/dist/
+build/
 
 # Environment
 .env

@@ -24,7 +24,7 @@
 		"html": false,
 		"anchor": true
 	},
-	"editorScript": "file:./index.js",
+	"editorScript": "file:../../build/services/index.js",
 	"editorStyle": "file:./editor.css",
 	"style": "file:./style.css",
 	"render": "file:./render.php"

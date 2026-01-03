@@ -7,13 +7,15 @@
   "private": true,
   "scripts": {
     "dev": "npm run watch",
-    "watch": "concurrently \"npm run watch:css\" \"npm run watch:js\"",
+    "watch": "concurrently \"npm run watch:css\" \"npm run watch:js\" \"npm run watch:blocks\"",
     "watch:css": "postcss assets/css/main.css -o assets/css/dist/main.css --watch",
     "watch:js": "esbuild assets/js/main.js --bundle --outfile=assets/js/dist/main.js --watch",
-    "build": "npm run build:css && npm run build:js",
+    "watch:blocks": "wp-scripts start",
+    "build": "npm run build:css && npm run build:js && npm run build:blocks",
     "build:css": "postcss assets/css/main.css -o assets/css/dist/main.css",
     "build:js": "esbuild assets/js/main.js --bundle --outfile=assets/js/dist/main.js",
-    "production": "npm run production:css && npm run production:js",
+    "build:blocks": "wp-scripts build",
+    "production": "npm run production:css && npm run production:js && npm run build:blocks",
     "production:css": "NODE_ENV=production postcss assets/css/main.css -o assets/css/dist/main.css",
     "production:js": "esbuild assets/js/main.js --bundle --minify --outfile=assets/js/dist/main.js",
     "lint": "npm run lint:js && npm run lint:css",
@@ -22,6 +24,7 @@
     "format": "prettier --write \"assets/**/*.{js,css}\""
   },
   "devDependencies": {
+    "@wordpress/scripts": "^27.0.0",
     "autoprefixer": "^10.4.16",
     "concurrently": "^8.2.2",
     "cssnano": "^6.0.2",
