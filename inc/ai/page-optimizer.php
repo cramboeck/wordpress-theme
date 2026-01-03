@@ -45,11 +45,17 @@ class Ramboeck_Page_Optimizer {
 		// Ensure required dependencies are available
 		$dependencies = $asset['dependencies'];
 
-		// Filter out 'react' if 'wp-element' is present (wp-element includes React)
-		if ( in_array( 'wp-element', $dependencies, true ) ) {
-			$dependencies = array_filter( $dependencies, function( $dep ) {
-				return 'react' !== $dep;
-			} );
+		// Filter out dependencies that aren't valid WordPress script handles
+		// - 'react' should use 'wp-element' which includes React
+		// - 'wp-primitives' is not a registered script (it's bundled with wp-components)
+		$invalid_deps = array( 'react', 'wp-primitives' );
+		$dependencies = array_filter( $dependencies, function( $dep ) use ( $invalid_deps ) {
+			return ! in_array( $dep, $invalid_deps, true );
+		} );
+
+		// Ensure wp-element is included (provides React)
+		if ( ! in_array( 'wp-element', $dependencies, true ) ) {
+			$dependencies[] = 'wp-element';
 		}
 
 		// Add wp-blocks for parsing generated content
