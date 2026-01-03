@@ -1,0 +1,47 @@
+{
+  "name": "ramboeck-theme",
+  "version": "1.0.0",
+  "description": "Ramböck Website Framework - Performance-optimiertes WordPress Theme",
+  "author": "Christoph Ramböck <christoph@ramboeck.it>",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "dev": "npm run watch",
+    "watch": "concurrently \"npm run watch:css\" \"npm run watch:js\"",
+    "watch:css": "postcss assets/css/main.css -o assets/css/dist/main.css --watch",
+    "watch:js": "esbuild assets/js/main.js --bundle --outfile=assets/js/dist/main.js --watch",
+    "build": "npm run build:css && npm run build:js",
+    "build:css": "postcss assets/css/main.css -o assets/css/dist/main.css",
+    "build:js": "esbuild assets/js/main.js --bundle --outfile=assets/js/dist/main.js",
+    "production": "npm run production:css && npm run production:js",
+    "production:css": "NODE_ENV=production postcss assets/css/main.css -o assets/css/dist/main.css",
+    "production:js": "esbuild assets/js/main.js --bundle --minify --outfile=assets/js/dist/main.js",
+    "lint": "npm run lint:js && npm run lint:css",
+    "lint:js": "eslint assets/js/**/*.js",
+    "lint:css": "stylelint assets/css/**/*.css",
+    "format": "prettier --write \"assets/**/*.{js,css}\""
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.16",
+    "concurrently": "^8.2.2",
+    "cssnano": "^6.0.2",
+    "esbuild": "^0.19.8",
+    "eslint": "^8.55.0",
+    "postcss": "^8.4.32",
+    "postcss-cli": "^11.0.0",
+    "postcss-import": "^15.1.0",
+    "postcss-nesting": "^12.0.2",
+    "prettier": "^3.1.1",
+    "stylelint": "^16.0.2",
+    "stylelint-config-standard": "^35.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}

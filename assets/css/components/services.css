@@ -1,0 +1,40 @@
+/**
+ * Services Block Styles
+ *
+ * @package Ramboeck
+ */
+
+.services {
+	padding-block: var(--space-2xl);
+}
+
+.services__grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: var(--space-lg);
+}
+
+.service-card {
+	padding: var(--space-lg);
+	background: var(--color-background);
+	border-radius: var(--radius-lg);
+	box-shadow: var(--shadow-md);
+}
+
+.service-card__icon {
+	width: 48px;
+	height: 48px;
+	margin-block-end: var(--space-md);
+	color: var(--color-primary);
+}
+
+.service-card__title {
+	font-size: var(--font-size-large);
+	margin-block-end: var(--space-sm);
+}
+
+@media (max-width: 768px) {
+	.services__grid {
+		grid-template-columns: 1fr;
+	}
+}

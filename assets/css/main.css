@@ -1,0 +1,66 @@
+/**
+ * Main Stylesheet
+ *
+ * Entry point for all CSS. Uses PostCSS imports.
+ *
+ * @package Ramboeck
+ */
+
+/* Foundation */
+@import 'variables.css';
+@import 'reset.css';
+@import 'base.css';
+@import 'utilities.css';
+
+/* Components */
+@import 'components/header.css';
+@import 'components/footer.css';
+@import 'components/navigation.css';
+
+/* Blocks */
+@import 'components/hero.css';
+@import 'components/services.css';
+@import 'components/testimonials.css';
+@import 'components/cta.css';
+@import 'components/faq.css';
+
+/* WordPress overrides */
+.wp-site-blocks {
+	padding-block-start: 0;
+}
+
+.wp-block-group.alignfull {
+	padding-inline: var(--space-outer);
+}
+
+/* Smooth scroll (only if no motion preference) */
+@media (prefers-reduced-motion: no-preference) {
+	html {
+		scroll-behavior: smooth;
+	}
+}
+
+/* Print styles */
+@media print {
+	.site-header,
+	.site-footer,
+	.cookie-banner,
+	.back-to-top {
+		display: none;
+	}
+
+	body {
+		font-size: 12pt;
+		color: black;
+		background: white;
+	}
+
+	a {
+		text-decoration: underline;
+	}
+
+	a[href^='http']::after {
+		content: ' (' attr(href) ')';
+		font-size: 0.8em;
+	}
+}

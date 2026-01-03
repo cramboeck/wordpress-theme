@@ -1,0 +1,43 @@
+/**
+ * FAQ Block Styles
+ *
+ * @package Ramboeck
+ */
+
+.faq {
+	padding-block: var(--space-2xl);
+}
+
+.faq__item {
+	border-block-end: 1px solid var(--color-border);
+}
+
+.faq__question {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: var(--space-md) 0;
+	font-size: var(--font-size-large);
+	font-weight: var(--font-weight-semibold);
+	text-align: left;
+	cursor: pointer;
+}
+
+.faq__icon {
+	flex-shrink: 0;
+	transition: transform var(--transition-fast);
+}
+
+.faq__item.is-open .faq__icon {
+	transform: rotate(180deg);
+}
+
+.faq__answer {
+	padding-block-end: var(--space-md);
+	display: none;
+}
+
+.faq__item.is-open .faq__answer {
+	display: block;
+}

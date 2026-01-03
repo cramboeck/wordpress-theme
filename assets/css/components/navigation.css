@@ -1,0 +1,24 @@
+/**
+ * Navigation Styles
+ *
+ * @package Ramboeck
+ */
+
+.primary-nav ul {
+	display: flex;
+	gap: var(--space-md);
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.primary-nav a {
+	font-size: var(--font-size-small);
+	font-weight: var(--font-weight-medium);
+	color: var(--color-text);
+	text-decoration: none;
+}
+
+.primary-nav a:hover {
+	color: var(--color-primary);
+}

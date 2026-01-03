@@ -1,0 +1,43 @@
+/**
+ * Testimonials Block Styles
+ *
+ * @package Ramboeck
+ */
+
+.testimonials {
+	padding-block: var(--space-2xl);
+	background: var(--color-background-alt);
+}
+
+.testimonial-card {
+	padding: var(--space-lg);
+	background: var(--color-background);
+	border-radius: var(--radius-lg);
+}
+
+.testimonial-card__quote {
+	font-size: var(--font-size-large);
+	font-style: italic;
+	margin-block-end: var(--space-md);
+}
+
+.testimonial-card__author {
+	display: flex;
+	align-items: center;
+	gap: var(--space-sm);
+}
+
+.testimonial-card__avatar {
+	width: 48px;
+	height: 48px;
+	border-radius: var(--radius-full);
+}
+
+.testimonial-card__name {
+	font-weight: var(--font-weight-semibold);
+}
+
+.testimonial-card__role {
+	font-size: var(--font-size-small);
+	color: var(--color-text-muted);
+}

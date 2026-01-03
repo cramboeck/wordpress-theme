@@ -1,0 +1,37 @@
+/**
+ * Hero Block Styles
+ *
+ * @package Ramboeck
+ */
+
+.hero {
+	min-height: 60vh;
+	display: flex;
+	align-items: center;
+	padding-block: var(--space-2xl);
+}
+
+.hero--full {
+	min-height: 100vh;
+}
+
+.hero__content {
+	max-width: var(--width-content);
+}
+
+.hero__title {
+	font-size: var(--font-size-3xl);
+	margin-block-end: var(--space-md);
+}
+
+.hero__subtitle {
+	font-size: var(--font-size-large);
+	color: var(--color-text-muted);
+	margin-block-end: var(--space-lg);
+}
+
+.hero__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-sm);
+}

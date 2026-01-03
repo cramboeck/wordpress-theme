@@ -1,0 +1,129 @@
+/**
+ * Modern CSS Reset
+ *
+ * Based on Josh Comeau's CSS Reset and Andy Bell's Modern Reset.
+ * Optimized for WordPress themes.
+ *
+ * @package Ramboeck
+ */
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+/* Remove default margin and padding */
+* {
+	margin: 0;
+	padding: 0;
+}
+
+/* Prevent font size inflation */
+html {
+	-moz-text-size-adjust: none;
+	-webkit-text-size-adjust: none;
+	text-size-adjust: none;
+}
+
+/* Set core body defaults */
+body {
+	min-height: 100vh;
+	line-height: var(--line-height-normal, 1.6);
+	-webkit-font-smoothing: antialiased;
+}
+
+/* Remove list styles on ul, ol elements with a list role */
+ul[role='list'],
+ol[role='list'] {
+	list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+	scroll-behavior: smooth;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+	text-decoration-skip-ink: auto;
+	color: currentColor;
+}
+
+/* Make images easier to work with */
+img,
+picture,
+video,
+canvas,
+svg {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+	font: inherit;
+}
+
+/* Remove default button styles */
+button {
+	background: none;
+	border: none;
+	cursor: pointer;
+}
+
+/* Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	overflow-wrap: break-word;
+}
+
+/* Headings balance */
+h1,
+h2,
+h3,
+h4 {
+	text-wrap: balance;
+}
+
+/* Paragraphs pretty */
+p {
+	text-wrap: pretty;
+}
+
+/* Remove all animations, transitions and smooth scroll for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+	html:focus-within {
+		scroll-behavior: auto;
+	}
+
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}
+
+/* Focus visible styles */
+:focus-visible {
+	outline: 2px solid var(--color-primary, #3b82f6);
+	outline-offset: 2px;
+}
+
+/* Remove focus outline for non-keyboard focus */
+:focus:not(:focus-visible) {
+	outline: none;
+}

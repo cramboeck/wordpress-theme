@@ -1,0 +1,31 @@
+/**
+ * CTA Block Styles
+ *
+ * @package Ramboeck
+ */
+
+.cta {
+	padding-block: var(--space-2xl);
+	background: var(--color-primary);
+	color: var(--color-background);
+	text-align: center;
+}
+
+.cta__title {
+	color: inherit;
+	margin-block-end: var(--space-sm);
+}
+
+.cta__text {
+	opacity: 0.9;
+	margin-block-end: var(--space-lg);
+}
+
+.cta .button {
+	background: var(--color-background);
+	color: var(--color-primary);
+}
+
+.cta .button:hover {
+	background: var(--color-background-alt);
+}
