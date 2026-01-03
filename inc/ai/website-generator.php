@@ -664,14 +664,14 @@ Gib NUR das JSON zurück, ohne Erklärungen.";
 <!-- /wp:buttons -->
 <!-- /wp:ramboeck/hero -->';
 
-		// Services with card hover effect
-		$blocks .= '<!-- wp:ramboeck/services {"columns":3,"services":' . wp_json_encode( $services_json ) . ',"className":"card-hover-wrapper"} /-->';
+		// Services with card hover effect (use JSON_UNESCAPED_UNICODE for proper German characters)
+		$blocks .= '<!-- wp:ramboeck/services {"columns":3,"services":' . json_encode( $services_json, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) . ',"className":"card-hover-wrapper"} /-->';
 
 		// Features with icon boxes
-		$blocks .= '<!-- wp:ramboeck/features {"columns":4,"features":' . wp_json_encode( $features_json ) . ',"className":"icon-colored"} /-->';
+		$blocks .= '<!-- wp:ramboeck/features {"columns":4,"features":' . json_encode( $features_json, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) . ',"className":"icon-colored"} /-->';
 
 		// Testimonials with pattern background
-		$blocks .= '<!-- wp:ramboeck/testimonials {"testimonials":' . wp_json_encode( $testimonials_json ) . ',"className":"has-pattern-bg"} /-->';
+		$blocks .= '<!-- wp:ramboeck/testimonials {"testimonials":' . json_encode( $testimonials_json, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) . ',"className":"has-pattern-bg"} /-->';
 
 		// CTA with gradient (uses primary color dynamically)
 		$blocks .= '<!-- wp:ramboeck/cta {"title":"' . esc_attr( $content['cta_title'] ) . '","text":"' . esc_attr( $content['cta_text'] ) . '","useGradient":true,"className":"has-floating-decoration"} -->
@@ -683,7 +683,7 @@ Gib NUR das JSON zurück, ohne Erklärungen.";
 <!-- /wp:ramboeck/cta -->';
 
 		// FAQ
-		$blocks .= '<!-- wp:ramboeck/faq {"items":' . wp_json_encode( $faq_json ) . '} /-->';
+		$blocks .= '<!-- wp:ramboeck/faq {"items":' . json_encode( $faq_json, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) . '} /-->';
 
 		return $blocks;
 	}
@@ -919,7 +919,7 @@ Format: HTML mit h2, h3, p Tags. Authentisch und vertrauenswürdig.";
 <!-- /wp:buttons -->
 <!-- /wp:ramboeck/hero -->
 
-<!-- wp:ramboeck/services {"columns":3,"services":' . wp_json_encode( $services_json ) . '} /-->';
+<!-- wp:ramboeck/services {"columns":3,"services":' . json_encode( $services_json, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) . '} /-->';
 	}
 
 	private static function get_fallback_services( $business ) {
