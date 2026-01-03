@@ -30,16 +30,37 @@ class Ramboeck_Page_Optimizer {
 	 * Enqueue editor assets
 	 */
 	public function enqueue_editor_assets() {
+		// Only load in post editor, not site editor
+		$screen = get_current_screen();
+		if ( $screen && 'site-editor' === $screen->id ) {
+			return;
+		}
+
 		$asset_file = get_template_directory() . '/assets/js/dist/page-optimizer.asset.php';
 		$asset      = file_exists( $asset_file ) ? require $asset_file : array(
-			'dependencies' => array( 'wp-plugins', 'wp-edit-post', 'wp-element', 'wp-components', 'wp-data', 'wp-i18n' ),
+			'dependencies' => array( 'wp-plugins', 'wp-edit-post', 'wp-element', 'wp-components', 'wp-data', 'wp-i18n', 'wp-blocks' ),
 			'version'      => RAMBOECK_VERSION,
 		);
+
+		// Ensure required dependencies are available
+		$dependencies = $asset['dependencies'];
+
+		// Filter out 'react' if 'wp-element' is present (wp-element includes React)
+		if ( in_array( 'wp-element', $dependencies, true ) ) {
+			$dependencies = array_filter( $dependencies, function( $dep ) {
+				return 'react' !== $dep;
+			} );
+		}
+
+		// Add wp-blocks for parsing generated content
+		if ( ! in_array( 'wp-blocks', $dependencies, true ) ) {
+			$dependencies[] = 'wp-blocks';
+		}
 
 		wp_enqueue_script(
 			'ramboeck-page-optimizer',
 			get_template_directory_uri() . '/assets/js/dist/page-optimizer.js',
-			$asset['dependencies'],
+			array_values( $dependencies ),
 			$asset['version'],
 			true
 		);
@@ -48,10 +69,11 @@ class Ramboeck_Page_Optimizer {
 			'ramboeck-page-optimizer',
 			'ramboeckOptimizer',
 			array(
-				'ajaxUrl'     => admin_url( 'admin-ajax.php' ),
-				'nonce'       => wp_create_nonce( 'ramboeck_optimizer' ),
+				'ajaxUrl'      => admin_url( 'admin-ajax.php' ),
+				'nonce'        => wp_create_nonce( 'ramboeck_optimizer' ),
 				'isConfigured' => ramboeck_claude()->is_configured(),
-				'strings'     => array(
+				'settingsUrl'  => admin_url( 'admin.php?page=ramboeck-ai-settings' ),
+				'strings'      => array(
 					'title'           => __( 'KI-Optimierer', 'ramboeck' ),
 					'analyze'         => __( 'Seite analysieren', 'ramboeck' ),
 					'analyzing'       => __( 'Analysiere...', 'ramboeck' ),
@@ -61,7 +83,8 @@ class Ramboeck_Page_Optimizer {
 					'generating'      => __( 'Generiere...', 'ramboeck' ),
 					'apply'           => __( 'Anwenden', 'ramboeck' ),
 					'discard'         => __( 'Verwerfen', 'ramboeck' ),
-					'notConfigured'   => __( 'Claude API nicht konfiguriert. Bitte API-Key in wp-config.php eintragen.', 'ramboeck' ),
+					'notConfigured'   => __( 'Claude API nicht konfiguriert.', 'ramboeck' ),
+					'configureHint'   => __( 'Bitte API-Key in den AI-Einstellungen hinterlegen.', 'ramboeck' ),
 					'error'           => __( 'Fehler bei der Anfrage.', 'ramboeck' ),
 					'noContent'       => __( 'Kein Inhalt zum Analysieren.', 'ramboeck' ),
 					'seoScore'        => __( 'SEO Score', 'ramboeck' ),

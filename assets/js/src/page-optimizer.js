@@ -30,7 +30,7 @@ import { starFilled, check, plus, pencil } from '@wordpress/icons';
 // Use starFilled as sparkles alternative
 const sparkles = starFilled;
 
-const { ajaxUrl, nonce, isConfigured, strings } = window.ramboeckOptimizer || {};
+const { ajaxUrl, nonce, isConfigured, settingsUrl, strings } = window.ramboeckOptimizer || {};
 
 /**
  * Score Badge Component
@@ -118,8 +118,17 @@ const PageOptimizer = () => {
 					{strings.notConfigured}
 				</Notice>
 				<p style={{ marginTop: '10px', fontSize: '12px', color: '#666' }}>
-					Füge <code>RAMBOECK_CLAUDE_API_KEY</code> in deine wp-config.php ein.
+					{strings.configureHint || 'Bitte API-Key in den AI-Einstellungen hinterlegen.'}
 				</p>
+				{settingsUrl && (
+					<Button
+						variant="secondary"
+						href={settingsUrl}
+						style={{ marginTop: '10px' }}
+					>
+						Einstellungen öffnen
+					</Button>
+				)}
 			</PanelBody>
 		);
 	}
