@@ -25,6 +25,7 @@
 @import 'components/cta.css';
 @import 'components/faq.css';
 @import 'components/contact.css';
+@import 'components/animations.css';
 
 /* WordPress overrides */
 .wp-site-blocks {
