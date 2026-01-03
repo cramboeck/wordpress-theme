@@ -43,11 +43,12 @@ class Ramboeck_Website_Generator {
 	 * Enqueue scripts
 	 */
 	public static function enqueue_scripts( $hook ) {
-		if ( 'ai-assistent_page_ramboeck-website-generator' !== $hook ) {
+		// Only load on website generator page
+		if ( strpos( $hook, 'ramboeck-website-generator' ) === false ) {
 			return;
 		}
 
-		wp_enqueue_style( 'ramboeck-generator', RAMBOECK_URI . '/assets/css/admin/generator.css', array(), RAMBOECK_VERSION );
+		// CSS file is optional - styles are inline in render_page()
 	}
 
 	/**
@@ -405,10 +406,19 @@ class Ramboeck_Website_Generator {
 	 * AJAX handler for website generation
 	 */
 	public static function ajax_generate_website() {
+		// Enable error reporting for debugging
+		error_log( 'Ramboeck Website Generator - AJAX handler called' );
+
 		check_ajax_referer( 'ramboeck_generate_website', 'nonce' );
 
 		if ( ! current_user_can( 'manage_options' ) ) {
 			wp_send_json_error( array( 'message' => 'Keine Berechtigung' ) );
+			return;
+		}
+
+		if ( empty( $_POST['data'] ) ) {
+			wp_send_json_error( array( 'message' => 'Keine Daten empfangen' ) );
+			return;
 		}
 
 		$data = $_POST['data'];
@@ -416,23 +426,31 @@ class Ramboeck_Website_Generator {
 
 		// Sanitize input
 		$business = array(
-			'name'           => sanitize_text_field( $data['business_name'] ),
-			'type'           => sanitize_text_field( $data['business_type'] ),
-			'location'       => sanitize_text_field( $data['business_location'] ),
-			'services'       => sanitize_textarea_field( $data['services'] ),
-			'unique_selling' => sanitize_textarea_field( $data['unique_selling'] ),
-			'target_audience'=> sanitize_text_field( $data['target_audience'] ),
-			'tone'           => sanitize_text_field( $data['tone'] ),
-			'contact_info'   => sanitize_textarea_field( $data['contact_info'] ),
+			'name'           => sanitize_text_field( $data['business_name'] ?? '' ),
+			'type'           => sanitize_text_field( $data['business_type'] ?? '' ),
+			'location'       => sanitize_text_field( $data['business_location'] ?? '' ),
+			'services'       => sanitize_textarea_field( $data['services'] ?? '' ),
+			'unique_selling' => sanitize_textarea_field( $data['unique_selling'] ?? '' ),
+			'target_audience'=> sanitize_text_field( $data['target_audience'] ?? '' ),
+			'tone'           => sanitize_text_field( $data['tone'] ?? 'professional' ),
+			'contact_info'   => sanitize_textarea_field( $data['contact_info'] ?? '' ),
 		);
 
-		$log[] = array( 'message' => '✓ Daten empfangen', 'type' => 'success' );
+		// Validate required fields
+		if ( empty( $business['name'] ) || empty( $business['type'] ) ) {
+			wp_send_json_error( array( 'message' => 'Firmenname und Branche sind erforderlich' ) );
+			return;
+		}
+
+		$log[] = array( 'message' => '✓ Daten empfangen: ' . $business['name'], 'type' => 'success' );
 
 		// Generate content with Claude
 		$claude = ramboeck_claude();
 
 		if ( ! $claude->is_configured() ) {
-			wp_send_json_error( array( 'message' => 'Claude API nicht konfiguriert' ) );
+			error_log( 'Ramboeck Website Generator - API Key not configured' );
+			wp_send_json_error( array( 'message' => 'Claude API nicht konfiguriert. Bitte unter AI Assistent → Einstellungen den API Key hinterlegen.' ) );
+			return;
 		}
 
 		$log[] = array( 'message' => '✓ Claude API verbunden', 'type' => 'success' );
@@ -557,13 +575,20 @@ ERSTELLE FOLGENDE TEXTE (JSON-Format):
 
 Gib NUR das JSON zurück, ohne Erklärungen.";
 
-		$response = $claude->send_message( $prompt );
+		// Increase max_tokens for complex JSON response
+		$response = $claude->send_message( $prompt, '', 4096 );
 
 		if ( is_wp_error( $response ) ) {
+			error_log( 'Ramboeck Website Generator - Claude API Error: ' . $response->get_error_message() );
 			return self::get_fallback_homepage( $business );
 		}
 
 		$content_text = $response['content'][0]['text'] ?? '';
+
+		if ( empty( $content_text ) ) {
+			error_log( 'Ramboeck Website Generator - Empty response from Claude API' );
+			return self::get_fallback_homepage( $business );
+		}
 
 		// Extract JSON from response
 		preg_match( '/\{[\s\S]*\}/', $content_text, $matches );
@@ -681,13 +706,18 @@ Erstelle für JEDE Leistung:
 
 Format: Reiner HTML-Text mit h2, p, ul/li Tags. Professionell und überzeugend.";
 
-		$response = $claude->send_message( $prompt );
+		$response = $claude->send_message( $prompt, '', 4096 );
 
 		if ( is_wp_error( $response ) ) {
+			error_log( 'Ramboeck - Services generation error: ' . $response->get_error_message() );
 			return self::get_fallback_services( $business );
 		}
 
 		$html = $response['content'][0]['text'] ?? '';
+
+		if ( empty( $html ) ) {
+			return self::get_fallback_services( $business );
+		}
 
 		// Wrap in WordPress blocks
 		return '<!-- wp:ramboeck/hero {"title":"Unsere Leistungen","subtitle":"' . esc_attr( $business['type'] ) . '","alignment":"center","backgroundColor":"#f8fafc"} /-->
@@ -726,13 +756,18 @@ Erstelle:
 
 Format: HTML mit h2, h3, p Tags. Authentisch und vertrauenswürdig.";
 
-		$response = $claude->send_message( $prompt );
+		$response = $claude->send_message( $prompt, '', 4096 );
 
 		if ( is_wp_error( $response ) ) {
+			error_log( 'Ramboeck - About generation error: ' . $response->get_error_message() );
 			return self::get_fallback_about( $business );
 		}
 
 		$html = $response['content'][0]['text'] ?? '';
+
+		if ( empty( $html ) ) {
+			return self::get_fallback_about( $business );
+		}
 
 		return '<!-- wp:ramboeck/hero {"title":"Über uns","subtitle":"Lernen Sie ' . esc_attr( $business['name'] ) . ' kennen","alignment":"center","backgroundColor":"#f8fafc"} /-->
 
