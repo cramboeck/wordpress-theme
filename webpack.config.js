@@ -19,12 +19,32 @@ const blockEntries = {
 	'contact/index': './blocks/contact/index.js',
 };
 
-module.exports = {
-	...defaultConfig,
-	entry: blockEntries,
-	output: {
-		...defaultConfig.output,
-		path: path.resolve(process.cwd(), 'build'),
-		filename: '[name].js',
-	},
+/**
+ * Admin/Editor plugins
+ */
+const pluginEntries = {
+	'page-optimizer': './assets/js/src/page-optimizer.js',
 };
+
+module.exports = [
+	// Blocks build
+	{
+		...defaultConfig,
+		entry: blockEntries,
+		output: {
+			...defaultConfig.output,
+			path: path.resolve(process.cwd(), 'build'),
+			filename: '[name].js',
+		},
+	},
+	// Plugins build
+	{
+		...defaultConfig,
+		entry: pluginEntries,
+		output: {
+			...defaultConfig.output,
+			path: path.resolve(process.cwd(), 'assets/js/dist'),
+			filename: '[name].js',
+		},
+	},
+];

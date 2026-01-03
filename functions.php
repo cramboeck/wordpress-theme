@@ -57,6 +57,7 @@ $ramboeck_includes = array(
 	'/inc/ai/seo-analyzer.php',      // AI SEO Analysis
 	'/inc/ai/admin-page.php',        // AI Admin Interface
 	'/inc/ai/website-generator.php', // AI Website Generator
+	'/inc/ai/page-optimizer.php',    // AI Page Optimizer
 
 	// Admin
 	'/inc/admin/theme-settings.php', // Theme Settings Panel

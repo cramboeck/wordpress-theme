@@ -1,0 +1,116 @@
+/**
+ * AI Page Optimizer Admin Styles
+ */
+
+/* Sidebar styling */
+.components-panel__body .ramboeck-analysis-results {
+	margin-top: 10px;
+}
+
+/* Score badge */
+.ramboeck-score-badge {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	color: white;
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+
+/* Priority badges */
+.ramboeck-priority-high {
+	background-color: #fef2f2;
+	color: #dc2626;
+}
+
+.ramboeck-priority-medium {
+	background-color: #fffbeb;
+	color: #d97706;
+}
+
+.ramboeck-priority-low {
+	background-color: #f0fdf4;
+	color: #16a34a;
+}
+
+/* Card improvements */
+.components-card {
+	border: 1px solid #e5e7eb;
+}
+
+.components-card:hover {
+	border-color: #3b82f6;
+}
+
+/* Loading state */
+.components-button.is-busy .components-spinner {
+	margin-right: 8px;
+}
+
+/* Analysis results list */
+.ramboeck-analysis-results ul {
+	margin: 0;
+	padding-left: 20px;
+}
+
+.ramboeck-analysis-results li {
+	margin-bottom: 4px;
+	font-size: 13px;
+}
+
+/* Keywords section */
+.ramboeck-keywords {
+	font-size: 12px;
+}
+
+.ramboeck-keywords strong {
+	font-weight: 600;
+}
+
+/* Modal styling */
+.components-modal__content textarea {
+	font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+	font-size: 11px;
+	line-height: 1.5;
+}
+
+/* Improvement cards */
+.ramboeck-improvement-card {
+	padding: 10px;
+	border-radius: 6px;
+	background: #f9fafb;
+	margin-bottom: 8px;
+}
+
+/* Section generate button */
+.ramboeck-generate-btn {
+	margin-top: 8px;
+}
+
+/* Notice adjustments */
+.components-panel__body .components-notice {
+	margin: 0 0 15px 0;
+}
+
+/* Icon in button */
+.components-button svg {
+	margin-right: 6px;
+}
+
+/* Flex improvements */
+.components-flex {
+	gap: 12px;
+}
+
+/* Section type selector */
+.components-select-control__input {
+	margin-bottom: 10px;
+}
+
+/* Plugin sidebar icon */
+.dashicons-sparkles::before {
+	content: "✨";
+}
