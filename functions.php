@@ -55,6 +55,9 @@ $ramboeck_includes = array(
 	'/inc/ai/content-generator.php', // AI Content Generation
 	'/inc/ai/seo-analyzer.php',      // AI SEO Analysis
 	'/inc/ai/admin-page.php',        // AI Admin Interface
+
+	// Demo Setup
+	'/inc/demo-setup.php',           // Demo Content Generator
 );
 
 foreach ( $ramboeck_includes as $file ) {
