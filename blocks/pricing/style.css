@@ -1,0 +1,116 @@
+/**
+ * Pricing Block Styles
+ */
+
+.pricing {
+	padding-block: var(--wp--preset--spacing--70);
+}
+
+.pricing__container {
+	max-width: var(--wp--style--global--wide-size);
+	margin-inline: auto;
+	padding-inline: var(--wp--custom--spacing--outer);
+}
+
+.pricing__grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: var(--wp--preset--spacing--50);
+	align-items: start;
+}
+
+.pricing-card {
+	position: relative;
+	padding: var(--wp--preset--spacing--50);
+	background-color: var(--wp--preset--color--background);
+	border: 1px solid var(--wp--preset--color--border);
+	border-radius: var(--wp--custom--border-radius--large);
+	text-align: center;
+}
+
+.pricing-card--featured {
+	border-color: var(--wp--preset--color--primary);
+	box-shadow: var(--wp--custom--shadow--large);
+	transform: scale(1.05);
+}
+
+.pricing-card__badge {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: var(--wp--preset--spacing--20) var(--wp--preset--spacing--40);
+	background-color: var(--wp--preset--color--primary);
+	color: var(--wp--preset--color--background);
+	font-size: var(--wp--preset--font-size--small);
+	font-weight: 600;
+	border-radius: var(--wp--custom--border-radius--full);
+}
+
+.pricing-card__name {
+	margin: 0 0 var(--wp--preset--spacing--30);
+	font-size: var(--wp--preset--font-size--large);
+	font-weight: 600;
+}
+
+.pricing-card__price {
+	margin-block-end: var(--wp--preset--spacing--30);
+}
+
+.pricing-card__amount {
+	font-size: var(--wp--preset--font-size--xx-large);
+	font-weight: 700;
+	color: var(--wp--preset--color--text);
+}
+
+.pricing-card__period {
+	font-size: var(--wp--preset--font-size--small);
+	color: var(--wp--preset--color--text-muted);
+}
+
+.pricing-card__description {
+	margin-block-end: var(--wp--preset--spacing--40);
+	color: var(--wp--preset--color--text-muted);
+}
+
+.pricing-card__features {
+	list-style: none;
+	padding: 0;
+	margin: 0 0 var(--wp--preset--spacing--50);
+	text-align: left;
+}
+
+.pricing-card__features li {
+	display: flex;
+	align-items: center;
+	gap: var(--wp--preset--spacing--20);
+	padding-block: var(--wp--preset--spacing--20);
+	border-block-end: 1px solid var(--wp--preset--color--border);
+}
+
+.pricing-card__features li:last-child {
+	border: none;
+}
+
+.pricing-card__features svg {
+	flex-shrink: 0;
+	color: var(--wp--preset--color--success);
+}
+
+.pricing-card__button {
+	display: block;
+	width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+	.pricing__grid {
+		grid-template-columns: 1fr;
+		max-width: 400px;
+		margin-inline: auto;
+	}
+
+	.pricing-card--featured {
+		transform: none;
+	}
+}

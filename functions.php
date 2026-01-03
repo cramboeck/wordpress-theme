@@ -49,6 +49,12 @@ $ramboeck_includes = array(
 	// Performance
 	'/inc/performance/critical-css.php',  // Inline Critical CSS
 	'/inc/performance/optimization.php',  // Various Optimizations
+
+	// AI Integration (Claude API)
+	'/inc/ai/claude-api.php',        // Claude API Client
+	'/inc/ai/content-generator.php', // AI Content Generation
+	'/inc/ai/seo-analyzer.php',      // AI SEO Analysis
+	'/inc/ai/admin-page.php',        // AI Admin Interface
 );
 
 foreach ( $ramboeck_includes as $file ) {

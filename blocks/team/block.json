@@ -1,0 +1,29 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "ramboeck/team",
+	"version": "1.0.0",
+	"title": "Team",
+	"category": "ramboeck",
+	"icon": "groups",
+	"description": "Teammitglieder als Karten darstellen.",
+	"keywords": ["team", "mitarbeiter", "personen"],
+	"textdomain": "ramboeck",
+	"attributes": {
+		"members": {
+			"type": "array",
+			"default": []
+		},
+		"columns": {
+			"type": "number",
+			"default": 4
+		}
+	},
+	"supports": {
+		"align": ["wide", "full"],
+		"html": false
+	},
+	"editorScript": "file:./index.js",
+	"style": "file:./style.css",
+	"render": "file:./render.php"
+}

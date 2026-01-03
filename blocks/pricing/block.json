@@ -1,0 +1,25 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "ramboeck/pricing",
+	"version": "1.0.0",
+	"title": "Preistabelle",
+	"category": "ramboeck",
+	"icon": "money-alt",
+	"description": "Preispläne als Karten darstellen.",
+	"keywords": ["pricing", "preise", "pläne", "tabelle"],
+	"textdomain": "ramboeck",
+	"attributes": {
+		"plans": {
+			"type": "array",
+			"default": []
+		}
+	},
+	"supports": {
+		"align": ["wide", "full"],
+		"html": false
+	},
+	"editorScript": "file:./index.js",
+	"style": "file:./style.css",
+	"render": "file:./render.php"
+}

@@ -1,0 +1,33 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "ramboeck/contact",
+	"version": "1.0.0",
+	"title": "Kontaktformular",
+	"category": "ramboeck",
+	"icon": "email",
+	"description": "Ein DSGVO-konformes Kontaktformular.",
+	"keywords": ["kontakt", "formular", "email"],
+	"textdomain": "ramboeck",
+	"attributes": {
+		"recipientEmail": {
+			"type": "string",
+			"default": ""
+		},
+		"successMessage": {
+			"type": "string",
+			"default": "Vielen Dank für Ihre Nachricht! Wir melden uns schnellstmöglich bei Ihnen."
+		},
+		"privacyPageId": {
+			"type": "number",
+			"default": 0
+		}
+	},
+	"supports": {
+		"align": ["wide"],
+		"html": false
+	},
+	"editorScript": "file:./index.js",
+	"style": "file:./style.css",
+	"render": "file:./render.php"
+}

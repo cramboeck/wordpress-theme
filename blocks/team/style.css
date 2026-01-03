@@ -1,0 +1,92 @@
+/**
+ * Team Block Styles
+ */
+
+.team {
+	padding-block: var(--wp--preset--spacing--70);
+}
+
+.team__container {
+	max-width: var(--wp--style--global--wide-size);
+	margin-inline: auto;
+	padding-inline: var(--wp--custom--spacing--outer);
+}
+
+.team__grid {
+	display: grid;
+	grid-template-columns: repeat(var(--team-columns, 4), 1fr);
+	gap: var(--wp--preset--spacing--50);
+}
+
+.team-card {
+	text-align: center;
+}
+
+.team-card__image {
+	width: 100%;
+	aspect-ratio: 1;
+	object-fit: cover;
+	border-radius: var(--wp--custom--border-radius--large);
+	margin-block-end: var(--wp--preset--spacing--40);
+}
+
+.team-card__content {
+	padding-inline: var(--wp--preset--spacing--20);
+}
+
+.team-card__name {
+	margin: 0 0 var(--wp--preset--spacing--10);
+	font-size: var(--wp--preset--font-size--large);
+	font-weight: 600;
+}
+
+.team-card__role {
+	margin: 0 0 var(--wp--preset--spacing--30);
+	font-size: var(--wp--preset--font-size--small);
+	color: var(--wp--preset--color--primary);
+	font-weight: 500;
+}
+
+.team-card__bio {
+	margin: 0 0 var(--wp--preset--spacing--30);
+	font-size: var(--wp--preset--font-size--small);
+	color: var(--wp--preset--color--text-muted);
+}
+
+.team-card__social {
+	display: flex;
+	justify-content: center;
+	gap: var(--wp--preset--spacing--30);
+}
+
+.team-card__social a {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 36px;
+	height: 36px;
+	background-color: var(--wp--preset--color--background-alt);
+	border-radius: var(--wp--custom--border-radius--full);
+	color: var(--wp--preset--color--text-muted);
+	transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.team-card__social a:hover {
+	background-color: var(--wp--preset--color--primary);
+	color: var(--wp--preset--color--background);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+	.team__grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (max-width: 576px) {
+	.team__grid {
+		grid-template-columns: 1fr;
+		max-width: 300px;
+		margin-inline: auto;
+	}
+}
