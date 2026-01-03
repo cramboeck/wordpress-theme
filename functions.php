@@ -36,6 +36,7 @@ $ramboeck_includes = array(
 	'/inc/helpers/utils.php',   // Utility Functions
 	'/inc/helpers/icons.php',   // SVG Icon System
 	'/inc/helpers/images.php',  // Image Helpers
+	'/inc/helpers/graphics.php',// Decorative Graphics
 
 	// SEO
 	'/inc/seo/meta-tags.php',   // Meta Tag Generation
@@ -55,6 +56,7 @@ $ramboeck_includes = array(
 	'/inc/ai/content-generator.php', // AI Content Generation
 	'/inc/ai/seo-analyzer.php',      // AI SEO Analysis
 	'/inc/ai/admin-page.php',        // AI Admin Interface
+	'/inc/ai/website-generator.php', // AI Website Generator
 
 	// Admin
 	'/inc/admin/theme-settings.php', // Theme Settings Panel

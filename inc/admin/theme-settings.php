@@ -386,14 +386,33 @@ class Ramboeck_Theme_Settings {
 			$button_radius = '9999px';
 		}
 
+		// Pattern type (if set by AI generator)
+		$pattern_type = $options['pattern_type'] ?? 'dots';
+		$wave_style = $options['wave_style'] ?? 1;
+
+		// Generate pattern SVG data URI
+		$pattern_svg = Ramboeck_Graphics::pattern( $primary, $pattern_type );
+		$pattern_data_uri = 'data:image/svg+xml,' . rawurlencode( $pattern_svg );
+
+		// Generate gradient from colors
+		$gradient = "linear-gradient(135deg, {$primary}, {$secondary})";
+
+		// Get rgba versions for overlays
+		$primary_rgba = Ramboeck_Graphics::hex_to_rgba( $primary, 0.1 );
+		$accent_rgba = Ramboeck_Graphics::hex_to_rgba( $accent, 0.15 );
+
 		?>
 		<style id="ramboeck-custom-colors">
 			:root {
 				--color-primary: <?php echo esc_attr( $primary ); ?>;
 				--color-primary-dark: <?php echo esc_attr( self::adjust_brightness( $primary, -20 ) ); ?>;
+				--color-primary-light: <?php echo esc_attr( self::adjust_brightness( $primary, 40 ) ); ?>;
+				--color-primary-rgba: <?php echo esc_attr( $primary_rgba ); ?>;
 				--color-secondary: <?php echo esc_attr( $secondary ); ?>;
 				--color-accent: <?php echo esc_attr( $accent ); ?>;
+				--color-accent-rgba: <?php echo esc_attr( $accent_rgba ); ?>;
 				--radius-button: <?php echo esc_attr( $button_radius ); ?>;
+				--gradient-primary: <?php echo esc_attr( $gradient ); ?>;
 			}
 
 			/* WordPress Block Editor colors */
@@ -406,6 +425,109 @@ class Ramboeck_Theme_Settings {
 
 			.wp-block-button__link {
 				border-radius: <?php echo esc_attr( $button_radius ); ?>;
+			}
+
+			/* Decorative patterns */
+			.has-pattern-bg {
+				position: relative;
+			}
+			.has-pattern-bg::before {
+				content: '';
+				position: absolute;
+				inset: 0;
+				background-image: url("<?php echo esc_attr( $pattern_data_uri ); ?>");
+				opacity: 0.5;
+				pointer-events: none;
+				z-index: 0;
+			}
+			.has-pattern-bg > * {
+				position: relative;
+				z-index: 1;
+			}
+
+			/* Gradient text */
+			.gradient-text {
+				background: var(--gradient-primary);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				background-clip: text;
+			}
+
+			/* Floating decorative elements */
+			.has-floating-decoration {
+				position: relative;
+				overflow: hidden;
+			}
+			.has-floating-decoration::before,
+			.has-floating-decoration::after {
+				content: '';
+				position: absolute;
+				border-radius: 50%;
+				background: var(--color-primary-rgba);
+				pointer-events: none;
+				z-index: 0;
+			}
+			.has-floating-decoration::before {
+				width: 400px;
+				height: 400px;
+				top: -150px;
+				right: -150px;
+				animation: float-slow 25s infinite ease-in-out;
+			}
+			.has-floating-decoration::after {
+				width: 300px;
+				height: 300px;
+				bottom: -100px;
+				left: -100px;
+				background: var(--color-accent-rgba);
+				animation: float-slow 30s infinite ease-in-out reverse;
+			}
+
+			@keyframes float-slow {
+				0%, 100% { transform: translate(0, 0) rotate(0deg); }
+				25% { transform: translate(30px, 30px) rotate(5deg); }
+				50% { transform: translate(-20px, 50px) rotate(-5deg); }
+				75% { transform: translate(-40px, -20px) rotate(3deg); }
+			}
+
+			/* Icon styling */
+			.icon-colored svg {
+				color: var(--color-primary);
+			}
+			.icon-accent svg {
+				color: var(--color-accent);
+			}
+			.icon-box {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				width: 60px;
+				height: 60px;
+				background: var(--color-primary-rgba);
+				border-radius: 12px;
+			}
+			.icon-box svg {
+				width: 28px;
+				height: 28px;
+				color: var(--color-primary);
+			}
+
+			/* Card hover effects */
+			.card-hover {
+				transition: transform 0.3s ease, box-shadow 0.3s ease;
+			}
+			.card-hover:hover {
+				transform: translateY(-5px);
+				box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+			}
+
+			/* Gradient border */
+			.gradient-border {
+				position: relative;
+				border: 2px solid transparent;
+				background: linear-gradient(white, white) padding-box,
+				            var(--gradient-primary) border-box;
+				border-radius: 12px;
 			}
 		</style>
 		<?php

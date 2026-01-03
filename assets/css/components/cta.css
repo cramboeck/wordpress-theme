@@ -3,10 +3,17 @@
  */
 
 .cta {
+	position: relative;
 	padding: var(--space-2xl) var(--space-outer);
 	background-color: var(--color-primary);
 	color: white;
 	text-align: center;
+	overflow: hidden;
+}
+
+/* Gradient variant */
+.cta--gradient {
+	background: var(--gradient-primary, linear-gradient(135deg, var(--color-primary), var(--color-secondary)));
 }
 
 .cta__container {

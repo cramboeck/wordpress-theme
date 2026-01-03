@@ -10,6 +10,18 @@
 	padding: var(--space-3xl) var(--space-outer);
 	background-size: cover;
 	background-position: center;
+	overflow: hidden;
+}
+
+/* Gradient background option */
+.hero--gradient {
+	background: var(--gradient-primary, linear-gradient(135deg, var(--color-primary), var(--color-secondary)));
+	color: white;
+}
+
+.hero--gradient .hero__subtitle {
+	color: inherit;
+	opacity: 0.9;
 }
 
 .hero--full {
