@@ -24,6 +24,7 @@
 @import 'components/testimonials.css';
 @import 'components/cta.css';
 @import 'components/faq.css';
+@import 'components/contact.css';
 
 /* WordPress overrides */
 .wp-site-blocks {

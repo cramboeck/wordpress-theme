@@ -4,44 +4,137 @@
 
 .cta {
 	position: relative;
-	padding: var(--space-2xl) var(--space-outer);
-	background-color: var(--color-primary);
+	padding: var(--space-3xl) var(--space-outer);
+	background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary, var(--color-primary)) 100%);
 	color: white;
 	text-align: center;
 	overflow: hidden;
 }
 
-/* Gradient variant */
-.cta--gradient {
-	background: var(--gradient-primary, linear-gradient(135deg, var(--color-primary), var(--color-secondary)));
+/* Decorative elements */
+.cta::before,
+.cta::after {
+	content: '';
+	position: absolute;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.1);
+	pointer-events: none;
+}
+
+.cta::before {
+	width: 400px;
+	height: 400px;
+	top: -200px;
+	right: -100px;
+}
+
+.cta::after {
+	width: 300px;
+	height: 300px;
+	bottom: -150px;
+	left: -100px;
 }
 
 .cta__container {
 	max-width: 800px;
 	margin-inline: auto;
+	position: relative;
+	z-index: 1;
 }
 
 .cta__title {
-	margin: 0 0 var(--space-sm);
+	margin: 0 0 var(--space-md);
 	font-size: var(--font-size-2xl);
 	font-weight: 700;
 	color: inherit;
+	line-height: 1.2;
 }
 
 .cta__text {
-	margin: 0 0 var(--space-lg);
+	margin: 0 0 var(--space-xl);
 	font-size: var(--font-size-large);
 	opacity: 0.9;
+	line-height: 1.6;
 }
 
+.cta__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-md);
+	justify-content: center;
+}
+
+/* CTA Buttons */
 .cta .wp-block-button__link {
-	background-color: white;
-	color: var(--color-primary);
-	padding: var(--space-sm) var(--space-lg);
+	padding: var(--space-md) var(--space-xl);
 	font-weight: 600;
-	border-radius: var(--radius-md);
+	font-size: 1rem;
+	border-radius: var(--radius-button, 0.5rem);
+	transition: all 0.3s ease;
 }
 
-.cta .wp-block-button__link:hover {
-	background-color: var(--color-background-alt);
+.cta .wp-block-button__link.has-white-background-color {
+	background-color: white !important;
+	color: var(--color-primary) !important;
+	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+.cta .wp-block-button__link.has-white-background-color:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.cta .is-style-outline .wp-block-button__link {
+	background: transparent !important;
+	border: 2px solid white;
+	color: white !important;
+}
+
+.cta .is-style-outline .wp-block-button__link:hover {
+	background: white !important;
+	color: var(--color-primary) !important;
+}
+
+/* Alternative: Light CTA */
+.cta--light {
+	background: var(--color-background-alt);
+	color: var(--color-text);
+}
+
+.cta--light::before,
+.cta--light::after {
+	background: var(--color-primary);
+	opacity: 0.05;
+}
+
+.cta--light .cta__text {
+	color: var(--color-text-muted);
+}
+
+/* Alternative: With pattern */
+.cta--pattern {
+	background-image:
+		radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
+		radial-gradient(circle at 80% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
+		linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary, var(--color-primary)) 100%);
+}
+
+@media (max-width: 768px) {
+	.cta {
+		padding: var(--space-2xl) var(--space-outer);
+	}
+
+	.cta__title {
+		font-size: var(--font-size-xl);
+	}
+
+	.cta__actions {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.cta .wp-block-button {
+		width: 100%;
+		max-width: 300px;
+	}
 }
