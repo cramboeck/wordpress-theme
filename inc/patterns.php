@@ -14,6 +14,13 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function ramboeck_register_pattern_categories() {
 	register_block_pattern_category(
+		'ramboeck-pages',
+		array(
+			'label' => __( 'Komplette Seiten', 'ramboeck' ),
+		)
+	);
+
+	register_block_pattern_category(
 		'ramboeck-heroes',
 		array(
 			'label' => __( 'Heroes', 'ramboeck' ),
